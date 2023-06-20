@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="height"></div>
+<img class="scaffold" src="https://cybersandbox.ca/wp-content/uploads/2023/06/scaffold-cradle-web.png">
+<div class="scanlines"></div>
+
+<style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+  background-image: url('https://cybersandbox.ca/wp-content/uploads/2023/06/infinite-scaffold.jpg');
+  background-size: 100% auto;
+}
+
+.scaffold {
+  position: fixed;
+  top: -10%;
+  right: 5%;
+  width: 25%;
+  filter: drop-shadow(5px 15px 3px rgba(0,0,0,0.2)) drop-shadow(3px 20px 5px rgba(0,0,0,0.2));
+  max-height: 90vh;
+  object-fit: contain;
+  object-position: top center;
+  animation: bob 3s ease infinite;
+}
+
+@keyframes bob {
+  0% {
+    top: -10%;
+  }
+  50% {
+    top: -7%;
+  }
+  100% {
+    top: -10%;
+  }
+}
+
+.scanlines {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 25vmin inset rgba(0,0,0,0.35), 0 0 5vmin inset rgba(0,0,0,0.25);
+  z-index: 99;
+  mix-blend-mode: color-burn;
+}
+
+.scanlines::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.2) 70%,
+    rgba(0, 0, 0, 0.6)
+  );
+  background-size: 100% 0.5rem;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.height {
+  height:100vh;
+}
+
+p {
+  display: block;
+  margin: 0;
+  animation: bigheight 1s linear;
+  height: 100px;
+}
+@keyframes bigheight {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 100px;
+  }
+}
+</style>
+
+<script>
+    // This function will be executed when the page is fully loaded.
+    function onLoad() {
+    // Load the JavaScript code.
+    document.getElementById('js').src = 'script.js';
+    }
+    
+    // Attach the onLoad function to the document's onload event.
+    document.onload = onLoad;
+    </script>
+    <script id="js" src="script.js" defer></script>
+
+
+</body>
+</html>
